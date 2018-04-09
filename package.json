@@ -1,0 +1,19 @@
+{
+ "name": "spinal-env-viewer-<yourName>-plugin",
+ "version": "1.0.0",
+ "description": "spinal-env-viewer-<yourName>-plugin",
+ "main": "newButton.js",
+ "dependencies": {
+   "html2canvas": "^1.0.0-alpha.10",
+   "jspdf": "^1.3.5"
+ },
+ "devDependencies": {},
+ "scripts": {
+   "test": "echo \"Error: no test specified\" && exit 1",
+   "postinstall": "npm run create_plugin_template",
+   "create_plugin_template": "create_plugin_template"
+ },
+ "keywords": [],
+ "author": "",
+ "license": "ISC"
+}
