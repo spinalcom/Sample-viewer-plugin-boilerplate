@@ -11,7 +11,7 @@
         });
       };
       let toload = [{
-        uri: '../templates/spinal-env-viewer-YourName-plugin/YourNameTemplate.html', 
+        uri: '../templates/spinal-env-viewer-yourName-plugin/YourNameTemplate.html', 
         name: 'YourNameTemplate.html'
       }];
 
