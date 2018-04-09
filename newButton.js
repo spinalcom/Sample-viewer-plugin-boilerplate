@@ -91,6 +91,5 @@
       Autodesk.Viewing.theExtensionManager.registerExtension('YourPanel', YourPanel);
     } // end run
   ]);
-  //require("./createPanel.js");
   require("./YourNameCtrl");
 })();
