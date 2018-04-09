@@ -11,7 +11,7 @@
         });
       };
       let toload = [{
-        uri: '../templates/spinal-env-viewer-<YourName>-plugin/YourNameTemplate.html', 
+        uri: '../templates/spinal-env-viewer-YourName-plugin/YourNameTemplate.html', 
         name: 'YourNameTemplate.html'
       }];
 
@@ -92,6 +92,5 @@
     } // end run
   ]);
   require("./createPanel.js");
-
 
 })();
