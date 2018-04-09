@@ -2,7 +2,7 @@
   let appSpinalforgePlugin = angular.module('app.spinalforge.plugin');
   appSpinalforgePlugin.run(["$rootScope", "$compile", "$templateCache", "$http", "spinalRegisterViewerPlugin",
     function ($rootScope, $compile, $templateCache, $http, spinalRegisterViewerPlugin) {
-      spinalRegisterViewerPlugin.register("YourPanel");  // create your panel
+      spinalRegisterViewerPlugin.register("YourPanel"); // create your panel
       let load_template = (uri, name) => {
         $http.get(uri).then((response) => {
           $templateCache.put(name, response.data);
@@ -11,7 +11,7 @@
         });
       };
       let toload = [{
-        uri: '../templates/spinal-env-viewer-yourName-plugin/YourNameTemplate.html', 
+        uri: '../templates/spinal-env-viewer-sample-plugin-boilerplate/YourNameTemplate.html',
         name: 'YourNameTemplate.html'
       }];
 
@@ -47,7 +47,7 @@
           this.viewer.toolbar.removeControl(this.subToolbar);
           return true;
         }
-// This function is to create your button on viewer, it used autodesk forge api 
+        // This function is to create your button on viewer, it used autodesk forge api 
         createUI() {
           var title = 'Title of your panel';
           this.panel = new PanelClass(this.viewer, title);
@@ -62,7 +62,7 @@
           };
 
           button1.addClass('fa');
-          button1.addClass('fa-list-alt');
+          button1.addClass('fa-child');
           button1.addClass('fa-2x');
           button1.setToolTip('On mouse over');
 
@@ -81,16 +81,16 @@
           _container.style.height = "calc(100% - 45px)";
           _container.style.overflowY = 'auto';
           this.panel.container.appendChild(_container);
-// Modify your ng-controller to have your own controller.
+          // Modify your ng-controller to have your own controller.
           $(_container).html("<div ng-controller=\"YourNameCtrl\" ng-cloak>" +
             $templateCache.get("YourNameTemplate.html") + "</div>");
           $compile($(_container).contents())($rootScope);
         }
       } // end class
-// Don't forget to register your Extension
+      // Don't forget to register your Extension
       Autodesk.Viewing.theExtensionManager.registerExtension('YourPanel', YourPanel);
     } // end run
   ]);
-  require("./createPanel.js");
-
+  //require("./createPanel.js");
+  require("./YourNameCtrl");
 })();
