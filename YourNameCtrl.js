@@ -1,6 +1,6 @@
 (function () {
   angular.module('app.spinalforge.plugin')
-    .controller('YourNameCtrl', ["$scope", "$rootScope", "$mdToast", "$mdDialog", "authService", "$compile", "$injector", "layout_uid", "spinalModelDictionary", "$q", "$templateCache",
+    .controller('sampleCtrl', ["$scope", "$rootScope", "$mdToast", "$mdDialog", "authService", "$compile", "$injector", "layout_uid", "spinalModelDictionary", "$q", "$templateCache",
       function ($scope, $rootScope, $mdToast, $mdDialog, authService, $compile, $injector, layout_uid, spinalModelDictionary, $q, $templateCache) {
 
         var viewer = v;
