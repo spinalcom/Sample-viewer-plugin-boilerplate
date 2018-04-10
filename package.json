@@ -1,7 +1,7 @@
 {
- "name": "spinal-env-viewer-sample-plugin-boilerplate",
+ "name": "spinal-env-viewer-sample-plugin",
  "version": "1.0.0",
- "description": "spinal-env-viewer-sample-plugin-boilerplate",
+ "description": "spinal-env-viewer-sample-plugin",
  "main": "newButton.js",
  "dependencies": {
    "html2canvas": "^1.0.0-alpha.10",
