@@ -2,7 +2,18 @@
   let appSpinalforgePlugin = angular.module('app.spinalforge.plugin');
   appSpinalforgePlugin.run(["$rootScope", "$compile", "$templateCache", "$http", "spinalRegisterViewerPlugin",
     function ($rootScope, $compile, $templateCache, $http, spinalRegisterViewerPlugin) {
-      spinalRegisterViewerPlugin.register("YourPanel"); // create your panel
+
+      // there is the configuration var of your button, you have to change it to take control of your button
+      // there is basic configuration file and you have to add your own parameter.
+      // your html have to be in templates/spinal-env-viewer-YourName-plugin/YourHtml.html
+      var urlHtmlTemplate = "../templates/spinal-env-viewer-sample-plugin/sampleTemplate.html";
+      var tmpTemplateName = "sampleTemplate.html";
+      var panelTitle = "sample panel";
+      var onMouseOver = "sample";
+      var yourCtrlName = "sampleCtrl";
+
+
+      spinalRegisterViewerPlugin.register('YourPanel'); // register your class panel
       let load_template = (uri, name) => {
         $http.get(uri).then((response) => {
           $templateCache.put(name, response.data);
@@ -11,8 +22,8 @@
         });
       };
       let toload = [{
-        uri: '../templates/spinal-env-viewer-sample-plugin-boilerplate/YourNameTemplate.html',
-        name: 'YourNameTemplate.html'
+        uri: urlHtmlTemplate,
+        name: tmpTemplateName
       }];
 
 
@@ -20,7 +31,7 @@
         load_template(toload[i].uri, toload[i].name);
       }
 
-      class YourPanel {
+      class YourPanel { // if you want to change the classe name do it directly here, don't forget to register your panel and register the extension
         constructor(viewer, options) {
           Autodesk.Viewing.Extension.call(this, viewer, options);
           this.viewer = viewer;
@@ -49,9 +60,9 @@
         }
         // This function is to create your button on viewer, it used autodesk forge api 
         createUI() {
-          var title = 'Title of your panel';
+          var title = panelTitle;
           this.panel = new PanelClass(this.viewer, title);
-          var button1 = new Autodesk.Viewing.UI.Button('Title of your button');
+          var button1 = new Autodesk.Viewing.UI.Button(panelTitle);
 
           button1.onClick = (e) => {
             if (!this.panel.isVisible()) {
@@ -64,7 +75,7 @@
           button1.addClass('fa');
           button1.addClass('fa-child');
           button1.addClass('fa-2x');
-          button1.setToolTip('On mouse over');
+          button1.setToolTip(onMouseOver);
 
           this.subToolbar = this.viewer.toolbar.getControl("spinalcom");
           if (!this.subToolbar) {
@@ -81,15 +92,14 @@
           _container.style.height = "calc(100% - 45px)";
           _container.style.overflowY = 'auto';
           this.panel.container.appendChild(_container);
-          // Modify your ng-controller to have your own controller.
-          $(_container).html("<div ng-controller=\"YourNameCtrl\" ng-cloak>" +
-            $templateCache.get("YourNameTemplate.html") + "</div>");
+          $(_container).html("<div ng-controller=\"" + yourCtrlName + "\" ng-cloak>" +
+            $templateCache.get(tmpTemplateName) + "</div>");
           $compile($(_container).contents())($rootScope);
         }
       } // end class
       // Don't forget to register your Extension
-      Autodesk.Viewing.theExtensionManager.registerExtension('YourPanel', YourPanel);
+      Autodesk.Viewing.theExtensionManager.registerExtension('YourPanel', YourPanel); // this is the register of your class
     } // end run
   ]);
-  require("./YourNameCtrl");
+  require("./sampleCtrl");
 })();
