@@ -77,9 +77,9 @@
           button1.addClass('fa-2x');
           button1.setToolTip(onMouseOver);
 
-          this.subToolbar = this.viewer.toolbar.getControl("spinalcom");
+          this.subToolbar = this.viewer.toolbar.getControl("spinalcom-sample");
           if (!this.subToolbar) {
-            this.subToolbar = new Autodesk.Viewing.UI.ControlGroup('spinalcom');
+            this.subToolbar = new Autodesk.Viewing.UI.ControlGroup('spinalcom-sample');
             this.viewer.toolbar.addControl(this.subToolbar);
           }
           this.subToolbar.addControl(button1);
